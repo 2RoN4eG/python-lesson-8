@@ -26,11 +26,45 @@ def show_menu():
 7 — сгруппировать клиентов по марке
 0 — выход
 """)
-    
-    
+
+
 def main():
     # Ваш код здесь
-    pass
+    while True:
+        show_menu()
+        selected = input("Сделайте ваш выбор: ")
+        match selected:
+            case "0":
+                break
+            case "1":
+                gu.show_all(clients)
+            case "2":
+                brand = input("Введите бренд автомобиля: ")
+                brand_clients = gu.filter_by_brand(clients, brand)
+                for client in brand_clients:
+                    print(client)
+            case "3":
+                index = int(input("Введите индекс: "))
+                if 1 <= index <= len(clients):
+                    amount = int(input("Введите сумму: "))
+                    gu.add_service_cost(clients, index - 1, amount)
+                else:
+                    print(f"Индекс должен быть в диапазоне от 1 до {len(clients)}")
+            case "4":
+                index = int(input("Введите индекс: "))
+                gu.delete_by_index(clients, index - 1)
+            case "5":
+                client = gu.get_most_expensive(clients)
+                print(client)
+            case "6":
+                years = int(input("Введите кол-во лет: "))
+                gu.delete_older_than(clients, years)
+                pass
+            case "7":
+                gu.group_by_brand(clients)
+                pass
+            case _:
+                pass
 
 
 if __name__ == "__main__":
