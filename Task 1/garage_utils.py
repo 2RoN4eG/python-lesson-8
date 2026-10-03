@@ -49,12 +49,6 @@ def group_by_brand(clients):
     clients = clients.copy()
     clients.sort(key=lambda client: client[2])
 
-    for brand, brand_clients in groupby(clients, key=lambda client: client[2]):
-        print(brand, end=" [")
-        for client in brand_clients:
-            print(client[1], end=", ")
-        print(end="]\n")
-
-    # result = [(key, list(group)) for key, group in groupby(clients, key=lambda client: client[2])]
-    # for item in result:
-    #     print(item)
+    return [(brand, [brand_client[1] for brand_client in list(brand_clients)])
+            for brand, brand_clients in groupby(clients,
+                                                key=lambda client: client[2])]

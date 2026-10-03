@@ -1,5 +1,6 @@
 import garage_utils as gu
 
+
 clients = [
     [1, "Иван Петров", "Toyota", 2015, 250],
     [2, "Анна Смирнова", "BMW", 2018, 480],
@@ -14,6 +15,7 @@ clients = [
     [11, "Николай Громов", "Renault", 2011, 170],
     [12, "Татьяна Белова", "Audi", 2019, 510]
 ]
+
 
 def show_menu():
     print("""
@@ -59,10 +61,10 @@ def main():
             case "6":
                 years = int(input("Введите кол-во лет: "))
                 gu.delete_older_than(clients, years)
-                pass
             case "7":
-                gu.group_by_brand(clients)
-                pass
+                result = gu.group_by_brand(clients)
+                for brand, brand_clients in result:
+                    print(brand, brand_clients)
             case _:
                 pass
 
