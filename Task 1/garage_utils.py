@@ -46,9 +46,12 @@ def group_by_brand(clients):
     """Группирует клиентов по марке с использованием itertools.groupby."""
     from itertools import groupby
 
+    def predicate(client):
+        return client[2]
+
     clients = clients.copy()
-    clients.sort(key=lambda client: client[2])
+    clients.sort(key=predicate)
 
     return [(brand, [brand_client[1] for brand_client in list(brand_clients)])
             for brand, brand_clients in groupby(clients,
-                                                key=lambda client: client[2])]
+                                                key=predicate)]
