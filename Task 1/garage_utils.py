@@ -1,4 +1,4 @@
-""" Модуль для работы со списком клиентов СТО"""
+"""Модуль для работы со списком клиентов СТО"""
 
 
 def show_all(clients):
@@ -11,7 +11,7 @@ def show_all(clients):
 def filter_by_brand(clients, brand):
     """Возвращает список клиентов указанной марки автомобиля."""
 
-    return [client for client in clients if client[2] == brand]
+    return [client for client in clients if client[2].lower() == brand.lower()]
 
 
 def add_service_cost(clients, index, amount):
