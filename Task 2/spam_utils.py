@@ -5,10 +5,15 @@ from datetime import datetime
 
 def count_spam_words(message, spam_words):
     """Возвращает количество спам‑слов в сообщении."""
+    text = message.lower()
+
+    words = text.split(" ")
+
     count = 0
-    for spam_word in spam_words:
-        if message.find(spam_word) != -1:
+    for word in words:
+        if word.strip(",.?!:;") in spam_words:
             count += 1
+
     return count
 
 
