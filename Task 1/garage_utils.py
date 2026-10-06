@@ -10,8 +10,10 @@ def show_all(clients):
 
 def filter_by_brand(clients, brand):
     """Возвращает список клиентов указанной марки автомобиля."""
+    import re
 
-    return [client for client in clients if client[2].lower() == brand.lower()]
+    return [client for client in clients if re.match(client[2].lower(),
+                                                     brand.lower())]
 
 
 def add_service_cost(clients, index, amount):
