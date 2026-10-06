@@ -54,7 +54,10 @@ def main():
                     print(f"Индекс должен быть в диапазоне от 1 до {len(clients)}")
             case "4":
                 index = int(input("Введите индекс: "))
-                gu.delete_by_index(clients, index - 1)
+                if 1 <= index <= len(clients):
+                    gu.delete_by_index(clients, index - 1)
+                else:
+                    print(f"Индекс должен быть в диапазоне от 1 до {len(clients)}")
             case "5":
                 client = gu.get_most_expensive(clients)
                 print(client)
